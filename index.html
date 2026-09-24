@@ -200,19 +200,19 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Base Weapon Damage (Attack)</label>
-                        <input type="number" id="baseDmg" value="2239" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="baseDmg" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Fire Rate (RPM)</label>
-                        <input type="number" id="fireRate" value="40" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="fireRate" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Magazine Capacity</label>
-                        <input type="number" id="magSize" value="5" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="magSize" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Reload Time (Seconds)</label>
-                        <input type="number" step="0.1" id="reloadTime" value="2.0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" step="0.1" id="reloadTime" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                 </div>
             </div>
@@ -268,7 +268,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Helmet</label>
                         <select id="slotHelmet" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            <option value="lunarRabbit">Lunar Rabbit Fur</option>
                             <option value="rabbit">Rabbit Fur</option>
                             <option value="wolf">Wolf Skin</option>
                             <option value="deer">Deer Hide</option>
@@ -281,7 +281,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Top</label>
                         <select id="slotTop" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            <option value="lunarRabbit">Lunar Rabbit Fur</option>
                             <option value="wastelandWolf">Wasteland Wolf Skin</option>
                         </select>
                     </div>
@@ -290,7 +290,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Bottoms</label>
                         <select id="slotBottoms" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            <option value="lunarRabbit">Lunar Rabbit Fur</option>
                         </select>
                     </div>
 
@@ -298,7 +298,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Gloves</label>
                         <select id="slotGloves" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            <option value="lunarRabbit">Lunar Rabbit Fur</option>
                         </select>
                     </div>
 
@@ -306,7 +306,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Shoes</label>
                         <select id="slotShoes" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
+                            <option value="wastelandWolf">Wasteland Wolf Skin</option>
                         </select>
                     </div>
 
@@ -314,7 +314,7 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Face (Mask Slot)</label>
                         <select id="slotFace" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <option value="starfallCowhide" selected>Starfall Cowhide (Mask)</option>
+                            <option value="starfallCowhide">Starfall Cowhide (Mask)</option>
                             <option value="starfallDown">Starfall Down (Mask)</option>
                             <option value="luckyRabbit">Lucky Rabbit Fur (Mask)</option>
                         </select>
@@ -333,27 +333,27 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Weapon / Attack Mod Bonus (%)</label>
-                        <input type="number" id="weaponDmgPct" value="45" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="weaponDmgPct" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Crit Rate Mod (%)</label>
-                        <input type="number" id="critRate" value="35" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="critRate" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Crit Damage Mod (%)</label>
-                        <input type="number" id="critDmg" value="140" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="critDmg" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Weakspot Multiplier Mod (%)</label>
-                        <input type="number" id="weakspotDmg" value="80" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="weakspotDmg" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Psi Intensity (Status / Elements)</label>
-                        <input type="number" id="psiIntensity" value="930" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="psiIntensity" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Vulnerability / Target Debuff (%)</label>
-                        <input type="number" id="vulnerability" value="15" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="vulnerability" value="0" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                 </div>
             </div>
