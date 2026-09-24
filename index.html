@@ -74,7 +74,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     Auto-Extract Stats from Screenshot
                 </h2>
-                <p class="text-xs text-slate-400 mb-4">Upload or drag your weapon/character stats panel screenshot to auto-parse values safely.</p>
+                <p class="text-xs text-slate-400 mb-4">Upload or drag your character stats panel screenshot to auto-parse values cleanly.</p>
                 
                 <div class="flex flex-col sm:flex-row items-center gap-4">
                     <label class="w-full sm:w-auto flex-grow flex flex-col items-center px-4 py-3 bg-gaming-dark border-2 border-dashed border-gaming-border hover:border-sky-400 rounded-lg cursor-pointer transition">
@@ -94,16 +94,16 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Base Weapon Damage (Attack / DMG)</label>
-                        <input type="number" id="baseDmg" value="2239" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Base Weapon Damage (Attack)</label>
+                        <input type="number" id="baseDmg" value="1420" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Fire Rate (RPM)</label>
-                        <input type="number" id="fireRate" value="40" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="fireRate" value="650" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Magazine Capacity (MAG)</label>
-                        <input type="number" id="magSize" value="5" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Magazine Capacity</label>
+                        <input type="number" id="magSize" value="30" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Reload Time (Seconds)</label>
@@ -154,15 +154,15 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Crit Rate Mod (%)</label>
-                        <input type="number" id="critRate" value="25.5" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="critRate" value="35" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Crit Damage Mod (%)</label>
-                        <input type="number" id="critDmg" value="30" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="critDmg" value="140" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Weakspot Multiplier Mod (%)</label>
-                        <input type="number" id="weakspotDmg" value="45" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                        <input type="number" id="weakspotDmg" value="80" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Psi Intensity (Status / Elements)</label>
@@ -312,7 +312,7 @@
             if (!file) return;
 
             document.getElementById('uploadLabel').innerText = `Scanning: ${file.name}...`;
-            document.getElementById('scanStatus').innerText = "Running OCR scan on weapon card...";
+            document.getElementById('scanStatus').innerText = "Running OCR scan on character sheet...";
 
             Tesseract.recognize(
                 file,
@@ -320,41 +320,29 @@
                 { logger: m => {} }
             ).then(({ data: { text } }) => {
                 document.getElementById('uploadLabel').innerText = "Choose or Drop Screenshot...";
-                document.getElementById('scanStatus').innerText = "Scan complete! Parsed specific weapon stats safely.";
-                parseWeaponScreenshot(text);
+                document.getElementById('scanStatus').innerText = "Scan complete! Parsed main character attributes safely.";
+                parseCharacterScreenshot(text);
             }).catch(err => {
                 document.getElementById('uploadLabel').innerText = "Choose or Drop Screenshot...";
                 document.getElementById('scanStatus').innerText = "Scan failed. Please input manually.";
             });
         }
 
-        function parseWeaponScreenshot(text) {
+        function parseCharacterScreenshot(text) {
             const lines = text.split('\n');
             
-            // Dedicated targeted search to prevent cross-contamination of values
             for (let line of lines) {
                 const lower = line.toLowerCase();
-                const numbers = line.match(/\d+(\.\d+)?/g);
+                const numbers = line.match(/\d+/g);
                 
                 if (!numbers) continue;
 
-                if ((lower.includes('dmg') || lower.includes('attack')) && !lower.includes('crit') && !lower.includes('weak')) {
-                    document.getElementById('baseDmg').value = parseFloat(numbers[0]);
+                // Explicitly look for the character panel labels only
+                if (lower.includes('attack') && !lower.includes('melee')) {
+                    document.getElementById('baseDmg').value = parseInt(numbers[0]);
                 }
-                else if (lower.includes('fire rate') || lower.includes('rpm')) {
-                    document.getElementById('fireRate').value = parseFloat(numbers[0]);
-                }
-                else if (lower.includes('mag') || lower.includes('capacity')) {
-                    document.getElementById('magSize').value = parseFloat(numbers[0]);
-                }
-                else if (lower.includes('crit rate')) {
-                    document.getElementById('critRate').value = parseFloat(numbers[0]);
-                }
-                else if (lower.includes('crit dmg') || lower.includes('crit damage')) {
-                    document.getElementById('critDmg').value = parseFloat(numbers[0]);
-                }
-                else if (lower.includes('weakspot')) {
-                    document.getElementById('weakspotDmg').value = parseFloat(numbers[0]);
+                else if (lower.includes('psi intensity') || (lower.includes('psi') && !lower.includes('deviant'))) {
+                    document.getElementById('psiIntensity').value = parseInt(numbers[0]);
                 }
             }
 
