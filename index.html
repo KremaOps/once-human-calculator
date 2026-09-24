@@ -15,7 +15,6 @@
                         gaming: {
                             dark: '#0b0f19',
                             card: '#131c2e',
-                            cardAlt: '#0e1626',
                             border: '#1e293b',
                             accent: '#38bdf8',
                             accentHover: '#0ea5e9',
@@ -65,7 +64,7 @@
     <!-- Main Content Grid -->
     <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 w-full flex-grow">
         
-        <!-- Left Column: Core Inputs & Custom Multipliers -->
+        <!-- Left Column: Inputs -->
         <div class="lg:col-span-7 space-y-6">
 
             <!-- Core Weapon Stats & Doom's Multipliers -->
@@ -112,7 +111,7 @@
                     </div>
                 </div>
 
-                <!-- Custom Multipliers List (Doom's "+ Add Multiplier" system) -->
+                <!-- Custom Multipliers List -->
                 <div class="mt-6 pt-4 border-t border-gaming-border">
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Custom Multipliers (Food, Whims, Cradle Perks)</span>
@@ -120,45 +119,11 @@
                             + Add Multiplier
                         </button>
                     </div>
-                    <div id="multipliersContainer" class="space-y-2">
-                        <!-- Dynamic Multiplier rows appear here -->
-                    </div>
+                    <div id="multipliersContainer" class="space-y-2"></div>
                 </div>
             </div>
 
-            <!-- Weapon & Armor Mods Configuration Selection -->
-            <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
-                <h2 class="text-lg font-bold text-sky-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    Weapon & Armor Mod Build Setup
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Primary Weapon Mod Archetype</label>
-                        <select id="modWeaponArchetype" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
-                            <option value="none">Standard / Custom Build</option>
-                            <option value="shrapnel">Shrapnel (+15% Weakspot / +20% Crit DMG)</option>
-                            <option value="powerSurge">Power Surge (Status / Element Scaling)</option>
-                            <option value="unstableBomber">Unstable Bomber (+12% Weapon DMG)</option>
-                            <option value="fastGunner">Fast Gunner (+10% Weapon DMG)</option>
-                            <option value="bullseye">Bullseye (+10% Weakspot DMG)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Armor Mod Set (4-Piece Bonus)</label>
-                        <select id="modArmorSet" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
-                            <option value="none">None / Mixed Pieces</option>
-                            <option value="savior">Savior Set (+8% Weapon DMG)</option>
-                            <option value="lonelyWolf">Lonely Wolf Set (+10% Crit Rate / +25% Crit DMG)</option>
-                            <option value="shelterer">Shelterer Set (+15% Weapon DMG)</option>
-                            <option value="artisansTouch">Artisan's Touch (Status Focus)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Armor Slot-by-Slot Hides & Furs Selection (6 Body/Mask Slots) -->
+            <!-- Armor Slot Hide Crafting Selection (6 Armor Slots) -->
             <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
                     <h2 class="text-lg font-bold text-sky-400 uppercase tracking-wider flex items-center gap-2">
@@ -166,10 +131,10 @@
                         Armor Slot Hide Crafting Selection
                     </h2>
                 </div>
-                <p class="text-xs text-slate-400 mb-4">Select the exact hide for each gear slot. Matching 4 body pieces triggers family combat bonuses automatically (Mask excluded).</p>
+                <p class="text-xs text-slate-400 mb-4">Select the exact hide for each of your 6 armor gear slots. Matching 4 body pieces triggers family combat bonuses automatically (Mask excluded).</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Helmet Slot -->
+                    <!-- Helmet -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Helmet</label>
                         <select id="slotHelmet" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -186,7 +151,7 @@
                         </select>
                     </div>
 
-                    <!-- Top Slot -->
+                    <!-- Top -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Top</label>
                         <select id="slotTop" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -203,7 +168,7 @@
                         </select>
                     </div>
 
-                    <!-- Bottoms Slot -->
+                    <!-- Bottoms -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Bottoms</label>
                         <select id="slotBottoms" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -220,7 +185,7 @@
                         </select>
                     </div>
 
-                    <!-- Gloves Slot -->
+                    <!-- Gloves -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Gloves</label>
                         <select id="slotGloves" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -237,7 +202,7 @@
                         </select>
                     </div>
 
-                    <!-- Shoes Slot -->
+                    <!-- Shoes -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Shoes</label>
                         <select id="slotShoes" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -254,7 +219,7 @@
                         </select>
                     </div>
 
-                    <!-- Face Slot (Mask) -->
+                    <!-- Face (Mask Slot) -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Face (Mask Slot)</label>
                         <select id="slotFace" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
@@ -276,7 +241,7 @@
 
         </div>
 
-        <!-- Right Column: Results & Matrix Output (Doom's Style Breakdown) -->
+        <!-- Right Column: Results & Matrix Output -->
         <div class="lg:col-span-5 space-y-6 flex flex-col">
             
             <div class="bg-gaming-card border border-sky-500/40 rounded-xl p-6 glow-box-strong relative">
@@ -288,7 +253,7 @@
                     </label>
                 </div>
 
-                <!-- Colored Bullet Damage Numbers (Doom's 3-Color Stack) -->
+                <!-- Colored Bullet Damage Numbers -->
                 <div class="bg-gaming-dark/80 border border-gaming-border rounded-xl p-5 mb-5 space-y-2">
                     <div class="flex justify-between items-center text-xs uppercase font-semibold text-slate-400">
                         <span>Single Shot Damage Breakdown</span>
@@ -309,7 +274,7 @@
                     </div>
                 </div>
 
-                <!-- Transparent Formula Box (Doom's Feature) -->
+                <!-- Transparent Formula Box -->
                 <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 mb-5 text-xs font-mono text-slate-300">
                     <div class="flex justify-between items-center mb-2">
                         <span class="font-bold text-sky-400 uppercase tracking-wider font-sans">Formula Breakdown:</span>
@@ -324,7 +289,7 @@
                     </div>
                 </div>
 
-                <!-- 3-Tiered DPS Outputs (Doom's Metric Suite) -->
+                <!-- 3-Tiered DPS Outputs -->
                 <div class="space-y-3">
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
@@ -560,35 +525,6 @@
             let critDmgMod = (parseFloat(document.getElementById('critDmg').value) || 0) / 100;
             let weakspotDmgMod = (parseFloat(document.getElementById('weakspotDmg').value) || 0) / 100;
 
-            // Mods and Hide Setup
-            const weaponArchetype = document.getElementById('modWeaponArchetype').value;
-            const armorSet = document.getElementById('modArmorSet').value;
-
-            let modWeaponBonus = 0;
-            let modCritBonus = 0;
-            let modCritDmgBonus = 0;
-            let modWeakspotBonus = 0;
-
-            if (weaponArchetype === 'shrapnel') {
-                modWeakspotBonus += 0.15;
-                modCritDmgBonus += 0.20;
-            } else if (weaponArchetype === 'unstableBomber') {
-                modWeaponBonus += 0.12;
-            } else if (weaponArchetype === 'fastGunner') {
-                modWeaponBonus += 0.10;
-            } else if (weaponArchetype === 'bullseye') {
-                modWeakspotBonus += 0.10;
-            }
-
-            if (armorSet === 'savior') {
-                modWeaponBonus += 0.08;
-            } else if (armorSet === 'lonelyWolf') {
-                modCritBonus += 0.10;
-                modCritDmgBonus += 0.25;
-            } else if (armorSet === 'shelterer') {
-                modWeaponBonus += 0.15;
-            }
-
             // Hides 4pc Check
             const bodySlots = [
                 document.getElementById('slotHelmet').value,
@@ -640,12 +576,12 @@
             customMultipliers.forEach(m => { customMultPct += (m.value / 100); });
 
             // Effective Multipliers
-            const totalWeaponPct = flatWeaponDmgBonus + modWeaponBonus + customMultPct;
-            const effectiveCritDmg = critDmgMod + critDmgBonus + modCritDmgBonus;
-            const effectiveCritRate = Math.min(1, critRateInput + modCritBonus);
-            const totalWeakspotMult = isWeakspot ? (weakspotDmgMod + airborneWeakspotBonus + modWeakspotBonus) : 0;
+            const totalWeaponPct = flatWeaponDmgBonus + customMultPct;
+            const effectiveCritDmg = critDmgMod + critDmgBonus;
+            const effectiveCritRate = Math.min(1, critRateInput);
+            const totalWeakspotMult = isWeakspot ? (weakspotDmgMod + airborneWeakspotBonus) : 0;
 
-            // Damage Math (Directly matching Once Human damage mechanics & Doom's layout)
+            // Damage Math
             const adjustedBase = baseDmg * (1 + totalWeaponPct);
             const normalHit = adjustedBase * (1 + totalWeakspotMult);
             const critHit = adjustedBase * (1 + effectiveCritDmg + totalWeakspotMult);
@@ -664,7 +600,7 @@
                 <div class="text-white font-semibold">Total: ${formatVal(normalHit * (1 - effectiveCritRate), shouldRound)} + ${formatVal(critHit * effectiveCritRate, shouldRound)} = ${formatVal(avgHit, shouldRound)}</div>
             `;
 
-            // DPS Metrics Suite (Standard Cycle, Continuous Burst, 3-Mag Rotation)
+            // DPS Metrics Suite
             const shotsPerSec = fireRate > 0 ? (fireRate / 60) : 0;
             const burstDPS = avgHit * shotsPerSec;
 
@@ -676,7 +612,6 @@
                 const singleCycleTime = magFireTime + reloadTime;
                 standardDPS = singleCycleTime > 0 ? (avgHit * magSize) / singleCycleTime : 0;
 
-                // 3 Full Mags test rotation: (3 * mag fire time) + (2 reloads in between)
                 const threeMagsCycleTime = (magFireTime * 3) + (reloadTime * 2);
                 sustained3Mags = threeMagsCycleTime > 0 ? (avgHit * magSize * 3) / threeMagsCycleTime : 0;
             }
@@ -716,7 +651,7 @@
                 } else if (diff < 0) {
                     verdictEl.innerHTML = `Slot A outperforms Slot B by <span class="text-sky-400 font-bold">+${Math.abs(pct)}% DPS</span>!`;
                 } else {
-                    verdictEl.innerHTML = `Both slots yield identical DPS performance.`;
+                    verdictEl.innerHTML = `Both slots identical.`;
                 }
             }
         }
