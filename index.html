@@ -120,45 +120,48 @@
                         Armor Slot Hide Crafting Selection
                     </h2>
                 </div>
-                <p class="text-xs text-slate-400 mb-4">Select the hide used for each gear slot to track active family set bonuses across your build.</p>
+                <p class="text-xs text-slate-400 mb-4">Select the exact hide for each gear slot. Matching 4 pieces of a family triggers 4-piece combat bonuses automatically!</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Helmet</label>
                         <select id="slotHelmet" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <optgroup label="Rabbit Furs">
+                            <optgroup label="Rabbit Furs (Soaring Leap: +20% Weakspot Airborne)">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
                             </optgroup>
-                            <optgroup label="Wolf Skins">
+                            <optgroup label="Bear Skins (Power of Bears: +6% Frost/Shock below 10°C)">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram (Herd Mentality: Status DMG team scaling)">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins (Pack Hunter: Tracking & Dmg Amplification)">
                                 <option value="wolf">Wolf Skin</option>
                                 <option value="wastelandWolf">Wasteland Wolf Skin</option>
                                 <option value="grasslandWolf">Grassland Wolf Skin</option>
                                 <option value="jungleWolf">Jungle Wolf Skin</option>
                                 <option value="lunarWolf">Lunar Wolf Skin</option>
                             </optgroup>
-                            <optgroup label="Cowhides">
+                            <optgroup label="Cowhides (Flat Weapon DMG / Stamina)">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
-                            </optgroup>
-                            <optgroup label="Crocodile Skins">
+                            <optgroup label="Crocodile Skins (Heat Resistance)">
                                 <option value="crocodile">Crocodile Hide</option>
                                 <option value="beachCrocodile">Beach Crocodile Skin</option>
                                 <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                                 <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
                             </optgroup>
-                            <optgroup label="Deer Hides">
+                            <optgroup label="Deer Hides (Impact & Sprint DMG Reduction)">
                                 <option value="deer">Deer Hide</option>
                                 <option value="highlandDeer">Highland Deer Hide</option>
                                 <option value="forestDeer">Forest Deer Hide</option>
@@ -172,6 +175,7 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide (+4.5% Weapon DMG, +9% in Water)</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -186,6 +190,15 @@
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
                             </optgroup>
+                            <optgroup label="Bear Skins">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
+                            </optgroup>
                             <optgroup label="Wolf Skins">
                                 <option value="wolf">Wolf Skin</option>
                                 <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
@@ -198,12 +211,6 @@
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
-                            </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
@@ -225,6 +232,7 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -239,6 +247,15 @@
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
                             </optgroup>
+                            <optgroup label="Bear Skins">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
+                            </optgroup>
                             <optgroup label="Wolf Skins">
                                 <option value="wolf">Wolf Skin</option>
                                 <option value="wastelandWolf">Wasteland Wolf Skin</option>
@@ -251,12 +268,6 @@
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
-                            </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
@@ -278,6 +289,7 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -292,6 +304,15 @@
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
                             </optgroup>
+                            <optgroup label="Bear Skins">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
+                            </optgroup>
                             <optgroup label="Wolf Skins">
                                 <option value="wolf">Wolf Skin</option>
                                 <option value="wastelandWolf">Wasteland Wolf Skin</option>
@@ -304,12 +325,6 @@
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
-                            </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
@@ -331,6 +346,7 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -345,6 +361,15 @@
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit">Lunar Rabbit Fur</option>
                             </optgroup>
+                            <optgroup label="Bear Skins">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
+                            </optgroup>
                             <optgroup label="Wolf Skins">
                                 <option value="wolf">Wolf Skin</option>
                                 <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
@@ -357,12 +382,6 @@
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
-                            </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
@@ -384,12 +403,13 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Face</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Face (Mask Slot - Excluded from 4pc Sets)</label>
                         <select id="slotFace" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
                             <optgroup label="Rabbit Furs">
@@ -397,6 +417,15 @@
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
                                 <option value="lunarRabbit">Lunar Rabbit Fur</option>
+                            </optgroup>
+                            <optgroup label="Bear Skins">
+                                <option value="bear">Bear Skin</option>
+                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
+                                <option value="snowfieldBear">Snowfield Bear Skin</option>
+                                <option value="caveBear">Cave Bear Skin</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool / Goat / Ram Hide</option>
                             </optgroup>
                             <optgroup label="Wolf Skins">
                                 <option value="wolf">Wolf Skin</option>
@@ -411,12 +440,6 @@
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide" selected>Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
-                            </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
                                 <option value="beachCrocodile">Beach Crocodile Skin</option>
@@ -437,11 +460,12 @@
                                 <option value="desertFox">Desert Fox Skin</option>
                                 <option value="starfallFox">Starfall Fox Skin</option>
                             </optgroup>
+                            <option value="shark">Shark Hide (+4.5% Weapon DMG)</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
                 </div>
-                <div id="hideSetStatus" class="mt-3 text-xs font-semibold text-sky-400">Skin Set Family Tracker: 4+ matching pieces highlights active animal family traits.</div>
+                <div id="hideSetStatus" class="mt-3 text-xs font-semibold text-sky-400">Set Bonus Tracker: Monitoring armor hide family slots.</div>
             </div>
 
             <!-- Mod & Multiplier Stack -->
@@ -505,7 +529,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Average Burst Hit</p>
-                            <p class="text-xs text-slate-500">Factoring mod stacks & crit frequency</p>
+                            <p class="text-xs text-slate-500">Factoring active hide set & crit frequency</p>
                         </div>
                         <div class="text-xl font-bold text-white" id="resAvgHit">0</div>
                     </div>
@@ -513,7 +537,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Weakspot Crit Hit</p>
-                            <p class="text-xs text-slate-500">Max scaling potential</p>
+                            <p class="text-xs text-slate-500">Includes airborne/set bonuses</p>
                         </div>
                         <div class="text-xl font-bold text-emerald-400" id="resMaxHit">0</div>
                     </div>
@@ -521,7 +545,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Status / Element Tick</p>
-                            <p class="text-xs text-slate-500">Psi Intensity baseline output</p>
+                            <p class="text-xs text-slate-500">Psi Intensity & herd mentality scaling</p>
                         </div>
                         <div class="text-xl font-bold text-amber-400" id="resStatusTick">0</div>
                     </div>
@@ -555,25 +579,27 @@
             <p>Created by <span class="text-slate-200 font-semibold">Krema Ops</span> for the Once Human Community.</p>
             <div class="flex items-center space-x-4">
                 <a href="https://tiktok.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">TikTok</a>
-                <a href="https://youtube.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">YouTube</a>
+                <a href="https://youtube.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">Jump to YouTube</a>
                 <span>Use Code <strong class="text-sky-400">KremaOps</strong> on Dubby Energy!</span>
             </div>
         </div>
     </footer>
 
-    <!-- Calculation Engine Script -->
+    <!-- Accurate Once Human Hide & Combat Math Engine -->
     <script>
         let slotAData = null;
         let slotBData = null;
 
         function getHideFamily(val) {
             if (val.includes('rabbit') || val.includes('Rabbit')) return 'rabbit';
+            if (val.includes('bear') || val.includes('Bear')) return 'bear';
+            if (val.includes('wool') || val.includes('Wool')) return 'wool';
             if (val.includes('wolf') || val.includes('Wolf')) return 'wolf';
             if (val.includes('cowhide') || val.includes('Cowhide')) return 'cowhide';
-            if (val.includes('bear') || val.includes('Bear')) return 'bear';
             if (val.includes('crocodile') || val.includes('Crocodile')) return 'crocodile';
             if (val.includes('deer') || val.includes('Deer') || val.includes('reindeer')) return 'deer';
             if (val.includes('fox') || val.includes('Fox')) return 'fox';
+            if (val === 'shark') return 'shark';
             return 'other';
         }
 
@@ -586,46 +612,76 @@
             const weaponDmgPct = (parseFloat(document.getElementById('weaponDmgPct').value) || 0) / 100;
             const critRate = Math.min(100, Math.max(0, parseFloat(document.getElementById('critRate').value) || 0)) / 100;
             const critDmg = (parseFloat(document.getElementById('critDmg').value) || 0) / 100;
-            const weakspotDmg = (parseFloat(document.getElementById('weakspotDmg').value) || 0) / 100;
-            const psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
+            let weakspotDmgMod = (parseFloat(document.getElementById('weakspotDmg').value) || 0) / 100;
+            let psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
             const vulnerability = (parseFloat(document.getElementById('vulnerability').value) || 0) / 100;
 
-            // Collect selections from all 6 armor slots to track family counts
-            const slots = [
+            // 5 Body Slots Count for 4-Piece Sets (Helmet, Top, Bottoms, Gloves, Shoes). Mask/Face is excluded.
+            const bodySlots = [
                 document.getElementById('slotHelmet').value,
                 document.getElementById('slotTop').value,
                 document.getElementById('slotBottoms').value,
                 document.getElementById('slotGloves').value,
-                document.getElementById('slotShoes').value,
-                document.getElementById('slotFace').value
+                document.getElementById('slotShoes').value
             ];
 
-            let familyCounts = { rabbit: 0, wolf: 0, cowhide: 0, bear: 0, crocodile: 0, deer: 0, fox: 0, other: 0 };
-            slots.forEach(hide => {
+            const faceSlot = document.getElementById('slotFace').value;
+
+            let familyCounts = { rabbit: 0, bear: 0, wool: 0, wolf: 0, cowhide: 0, crocodile: 0, deer: 0, fox: 0 };
+            bodySlots.forEach(hide => {
                 if (hide !== 'none') {
                     let fam = getHideFamily(hide);
                     if (familyCounts[fam] !== undefined) familyCounts[fam]++;
                 }
             });
 
-            // Display active family counts cleanly without fake global damage multipliers
-            let statusText = "Skin Set Family Tracker: No 4+ matching family pieces.";
-            for (let fam in familyCounts) {
-                if (familyCounts[fam] >= 4) {
-                    let familyNameCapitalized = fam.charAt(0).toUpperCase() + fam.slice(1);
-                    statusText = `Active Set Family: ${familyNameCapitalized} (${familyCounts[fam]}/6 pieces matching)`;
-                    break;
-                }
-            }
-            document.getElementById('hideSetStatus').innerText = statusText;
+            // Check active 4-piece set bonuses & individual single-piece buffs
+            let activeSetText = "No 4-Piece Combat Set Active (Needs 4 matching body pieces)";
+            let airborneWeakspotBonus = 0; // Rabbit Fur Set (+20% Weakspot)
+            let elementalBonus = 0;        // Bear Skin Set (+6% Frost/Shock)
+            let statusDmgBonus = 0;        // Wool/Goat Set (+6% Status)
+            let flatWeaponDmgBonus = 0;    // Shark Hide / Cowhide single piece boosts
 
-            // Clean, accurate calculation driven strictly by attack power, weapon mod stacks, and target vulnerability
-            const adjustedBase = baseDmg * (1 + weaponDmgPct);
+            // 1. Rabbit Fur Set Check (Soaring Leap)
+            if (familyCounts.rabbit >= 4) {
+                airborneWeakspotBonus = 0.20;
+                activeSetText = "Active 4pc Set: Rabbit Fur (Soaring Leap: +20% Airborne Weakspot DMG) active!";
+            }
+            // 2. Bear Skin Set Check (Power of Bears)
+            else if (familyCounts.bear >= 4) {
+                elementalBonus = 0.06;
+                activeSetText = "Active 4pc Set: Bear Skin (Power of Bears: +6% Element/Frost/Shock) active!";
+            }
+            // 3. Wool / Goat / Ram Set Check (Herd Mentality)
+            else if (familyCounts.wool >= 4) {
+                statusDmgBonus = 0.06;
+                activeSetText = "Active 4pc Set: Herd Mentality (+6% Status Damage team bonus) active!";
+            }
+            // 4. Wolf Skin Set Check (Pack Hunter)
+            else if (familyCounts.wolf >= 4) {
+                flatWeaponDmgBonus += 0.04;
+                activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter tracking & damage amplification) active!";
+            }
+
+            // Check individual single-piece mask/slot highlights
+            const allSelectedHides = [...bodySlots, faceSlot];
+            allSelectedHides.forEach(hide => {
+                if (hide === 'shark') flatWeaponDmgBonus += 0.045; // Shark hide single piece
+            });
+
+            document.getElementById('hideSetStatus').innerText = activeSetText;
+
+            // Apply game math multipliers
+            const effectiveWeaponDmgPct = weaponDmgPct + flatWeaponDmgBonus;
+            const adjustedBase = baseDmg * (1 + effectiveWeaponDmgPct);
             
             const normalHit = adjustedBase * (1 + vulnerability);
             const critHit = adjustedBase * (1 + critDmg) * (1 + vulnerability);
             const avgHit = normalHit * (1 - critRate) + critHit * critRate;
-            const maxHit = adjustedBase * (1 + critDmg + weakspotDmg) * (1 + vulnerability);
+            
+            // Factor in Rabbit Fur's +20% airborne weakspot bonus on max weakspot hits
+            const totalWeakspotMult = weakspotDmgMod + airborneWeakspotBonus;
+            const maxHit = adjustedBase * (1 + critDmg + totalWeakspotMult) * (1 + vulnerability);
 
             const shotsPerSec = fireRate / 60;
             const timeToEmpty = magSize / shotsPerSec;
@@ -633,7 +689,9 @@
             const totalDmgPerMag = avgHit * magSize;
             const sustainedDPS = totalCycleTime > 0 ? totalDmgPerMag / totalCycleTime : 0;
 
-            const statusTick = (psiIntensity * 0.35) * (1 + vulnerability);
+            // Status tick with Herd Mentality / element scaling
+            const effectivePsi = psiIntensity * (1 + elementalBonus + statusDmgBonus);
+            const statusTick = (effectivePsi * 0.35) * (1 + vulnerability);
 
             document.getElementById('resSustainedDPS').innerText = Math.round(sustainedDPS).toLocaleString();
             document.getElementById('resAvgHit').innerText = Math.round(avgHit).toLocaleString();
