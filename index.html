@@ -53,10 +53,6 @@
                 </div>
             </div>
             <div class="flex items-center gap-3 flex-wrap">
-                <button onclick="openGuideModal()" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded bg-sky-500/20 text-sky-400 border border-sky-500/40 hover:bg-sky-500/30 transition flex items-center gap-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    📖 Hide Reference Sheet
-                </button>
                 <button onclick="loadPreset('m416')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">M416 Shrapnel</button>
                 <button onclick="loadPreset('bow')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">Compound Bow</button>
                 <button onclick="loadPreset('bingo')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">Bingo Surge</button>
@@ -118,11 +114,15 @@
 
             <!-- Armor Slot-by-Slot Hides & Furs Selection -->
             <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
-                <div class="flex justify-between items-center mb-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
                     <h2 class="text-lg font-bold text-sky-400 uppercase tracking-wider flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                         Armor Slot Hide Crafting Selection
                     </h2>
+                    <button onclick="openGuideModal()" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded bg-sky-500/20 text-sky-400 border border-sky-500/40 hover:bg-sky-500/30 transition flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        📖 View Reference Sheet
+                    </button>
                 </div>
                 <p class="text-xs text-slate-400 mb-4">Select the exact hide for each gear slot. Matching 4 body pieces triggers family combat bonuses automatically (Mask excluded).</p>
 
@@ -487,7 +487,7 @@
         <div class="lg:col-span-5 space-y-6 flex flex-col">
             
             <!-- Real-Time Output Display -->
-            <div class="bg-gaming-card border border-sky-500/40 rounded-xl p-6 glow-box-strong relative overflow-hidden">
+            <div class="bg-gaming-card border border-sky-500/40 rounded-xl p-6 glow-box-strong relative">
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 
                 <h2 class="text-xl font-bold text-white uppercase tracking-wider mb-6 flex items-center justify-between">
@@ -718,29 +718,27 @@
             let flatWeaponDmgBonus = 0;    
             let critDmgBonus = 0;          
 
-            // 4-Piece Set Bonuses
             if (familyCounts.rabbit >= 4) {
-                airborneWeakspotBonus = 0.20; // +20% Airborne Weakspot
+                airborneWeakspotBonus = 0.20; 
                 activeSetText = "Active 4pc Set: Rabbit Fur (Soaring Leap: +20% Airborne Weakspot DMG)!";
             }
             else if (familyCounts.bear >= 4) {
-                elementalBonus = 0.06; // +6% Frost & Shock
+                elementalBonus = 0.06; 
                 activeSetText = "Active 4pc Set: Bear Skin (Power of Bears: +6% Element/Frost/Shock)!";
             }
             else if (familyCounts.wool >= 4) {
-                statusDmgBonus = 0.06; // Max 6% team status
+                statusDmgBonus = 0.06; 
                 activeSetText = "Active 4pc Set: Herd Mentality (+6% Status Damage team bonus)!";
             }
             else if (familyCounts.wolf >= 4) {
-                weakspotDmgMod += 0.06; // +6% Weakspot in team
+                weakspotDmgMod += 0.06; 
                 activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter: +6% Weakspot DMG in team)!";
             }
             else if (familyCounts.deer >= 4) {
-                critDmgBonus += 0.15; // +15% Crit DMG after impact
+                critDmgBonus += 0.15; 
                 activeSetText = "Active 4pc Set: Deer Hide (Impact Hit: +15% Crit DMG)!";
             }
 
-            // Single Piece / Mask Traits
             const allSelectedHides = [...bodySlots, faceSlot];
             allSelectedHides.forEach(hide => {
                 if (hide === 'shark') flatWeaponDmgBonus += 0.045; 
