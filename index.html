@@ -53,6 +53,10 @@
                 </div>
             </div>
             <div class="flex items-center gap-3 flex-wrap">
+                <button onclick="openGuideModal()" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded bg-sky-500/20 text-sky-400 border border-sky-500/40 hover:bg-sky-500/30 transition flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    📖 Hide Reference Sheet
+                </button>
                 <button onclick="loadPreset('m416')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">M416 Shrapnel</button>
                 <button onclick="loadPreset('bow')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">Compound Bow</button>
                 <button onclick="loadPreset('bingo')" class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider rounded bg-gaming-border hover:bg-sky-500/20 hover:border-sky-500 border border-transparent transition">Bingo Surge</button>
@@ -127,55 +131,58 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Helmet</label>
                         <select id="slotHelmet" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <optgroup label="Rabbit Furs (Soaring Leap: +20% Weakspot Airborne)">
+                            <optgroup label="Deer Hides (+15% Crit DMG on impact set)">
+                                <option value="deer">Deer Hide (+3% sprint reduction)</option>
+                                <option value="highlandDeer">Highland Deer Hide (+5% sprint reduction)</option>
+                                <option value="forestDeer">Forest Deer Hide (+5% scoped reduction)</option>
+                                <option value="tundraDeer">Tundra Deer Hide (+3% moving reduction)</option>
+                                <option value="dreamfusedDeer">Dreamfused Deer Hide</option>
+                                <option value="lunarDeer">Lunar Deer Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins (Pack Hunter Set)">
+                                <option value="wolf">Wolf Skin (+5% weakspot reduction)</option>
+                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
+                                <option value="grasslandWolf">Grassland Wolf Skin</option>
+                                <option value="jungleWolf">Jungle Wolf Skin</option>
+                                <option value="dreamfusedWolf">Dreamfused Wolf Skin</option>
+                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            </optgroup>
+                            <optgroup label="Rabbit Furs (Soaring Leap: +20% Airborne Weakspot)">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
+                                <option value="dreamfusedRabbit">Dreamfused Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
                             </optgroup>
-                            <optgroup label="Bear Skins (Power of Bears: +6% Frost/Shock below 10°C)">
+                            <optgroup label="Wool / Goat / Ram (Herd Mentality Set)">
+                                <option value="wool">Wool (+5% non-weakspot reduction)</option>
+                                <option value="rockWallWool">Rock Wall Wool</option>
+                                <option value="mountainWool">Mountain Wool</option>
+                                <option value="goldenWool">Golden Wool</option>
+                                <option value="dreamfusedWool">Dreamfused Wool</option>
+                                <option value="lunarWool">Lunar Wool</option>
+                            </optgroup>
+                            <optgroup label="Bear Skins (Power of Bears Set)">
                                 <option value="bear">Bear Skin</option>
                                 <option value="floatingIceBear">Floating Ice Bear Skin</option>
                                 <option value="snowfieldBear">Snowfield Bear Skin</option>
                                 <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
-                            <optgroup label="Wool / Goat / Ram (Herd Mentality: Status DMG team scaling)">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins (Pack Hunter: Tracking & Dmg Amplification)">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
-                            </optgroup>
-                            <optgroup label="Cowhides">
-                                <option value="cowhide">Cowhide</option>
-                                <option value="mountainCowhide">Mountain Cowhide</option>
-                                <option value="valleyCowhide">Valley Cowhide</option>
-                                <option value="starfallCowhide">Starfall Cowhide</option>
-                            </optgroup>
                             <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
                                 <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                                 <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
+                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                             </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
+                            <optgroup label="Cowhides (Stamina / Crit DMG Reduction)">
+                                <option value="cowhide">Cowhide</option>
+                                <option value="mountainCowhide">Mountain Cowhide</option>
+                                <option value="valleyCowhide">Valley Cowhide</option>
+                                <option value="dreamfusedCowhide">Dreamfused Cowhide</option>
+                                <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
-                            <option value="shark">Shark Hide (+4.5% Weapon DMG, +9% in Water)</option>
+                            <option value="shark">Shark Hide (+4.5% Weapon DMG)</option>
+                            <option value="reindeer">Reindeer Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -184,11 +191,36 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Top</label>
                         <select id="slotTop" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
+                            <optgroup label="Deer Hides">
+                                <option value="deer">Deer Hide</option>
+                                <option value="highlandDeer">Highland Deer Hide</option>
+                                <option value="forestDeer">Forest Deer Hide</option>
+                                <option value="tundraDeer">Tundra Deer Hide</option>
+                                <option value="dreamfusedDeer">Dreamfused Deer Hide</option>
+                                <option value="lunarDeer">Lunar Deer Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins">
+                                <option value="wolf">Wolf Skin</option>
+                                <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
+                                <option value="grasslandWolf">Grassland Wolf Skin</option>
+                                <option value="jungleWolf">Jungle Wolf Skin</option>
+                                <option value="dreamfusedWolf">Dreamfused Wolf Skin</option>
+                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            </optgroup>
                             <optgroup label="Rabbit Furs">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
+                                <option value="dreamfusedRabbit">Dreamfused Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool</option>
+                                <option value="rockWallWool">Rock Wall Wool</option>
+                                <option value="mountainWool">Mountain Wool</option>
+                                <option value="goldenWool">Golden Wool</option>
+                                <option value="dreamfusedWool">Dreamfused Wool</option>
+                                <option value="lunarWool">Lunar Wool</option>
                             </optgroup>
                             <optgroup label="Bear Skins">
                                 <option value="bear">Bear Skin</option>
@@ -196,43 +228,21 @@
                                 <option value="snowfieldBear">Snowfield Bear Skin</option>
                                 <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
-                            <optgroup label="Wool / Goat / Ram">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            <optgroup label="Crocodile Skins">
+                                <option value="crocodile">Crocodile Hide</option>
+                                <option value="beachCrocodile">Beach Crocodile Skin</option>
+                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
+                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                             </optgroup>
                             <optgroup label="Cowhides">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
+                                <option value="dreamfusedCowhide">Dreamfused Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Crocodile Skins">
-                                <option value="crocodile">Crocodile Hide</option>
-                                <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
-                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
-                            </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
-                            </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
                             <option value="shark">Shark Hide</option>
+                            <option value="reindeer">Reindeer Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -241,11 +251,36 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Bottoms</label>
                         <select id="slotBottoms" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
+                            <optgroup label="Deer Hides">
+                                <option value="deer">Deer Hide</option>
+                                <option value="highlandDeer">Highland Deer Hide</option>
+                                <option value="forestDeer">Forest Deer Hide</option>
+                                <option value="tundraDeer">Tundra Deer Hide</option>
+                                <option value="dreamfusedDeer">Dreamfused Deer Hide</option>
+                                <option value="lunarDeer">Lunar Deer Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins">
+                                <option value="wolf">Wolf Skin</option>
+                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
+                                <option value="grasslandWolf">Grassland Wolf Skin</option>
+                                <option value="jungleWolf">Jungle Wolf Skin</option>
+                                <option value="dreamfusedWolf">Dreamfused Wolf Skin</option>
+                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            </optgroup>
                             <optgroup label="Rabbit Furs">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
+                                <option value="dreamfusedRabbit">Dreamfused Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool</option>
+                                <option value="rockWallWool">Rock Wall Wool</option>
+                                <option value="mountainWool">Mountain Wool</option>
+                                <option value="goldenWool">Golden Wool</option>
+                                <option value="dreamfusedWool">Dreamfused Wool</option>
+                                <option value="lunarWool">Lunar Wool</option>
                             </optgroup>
                             <optgroup label="Bear Skins">
                                 <option value="bear">Bear Skin</option>
@@ -253,43 +288,21 @@
                                 <option value="snowfieldBear">Snowfield Bear Skin</option>
                                 <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
-                            <optgroup label="Wool / Goat / Ram">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            <optgroup label="Crocodile Skins">
+                                <option value="crocodile">Crocodile Hide</option>
+                                <option value="beachCrocodile">Beach Crocodile Skin</option>
+                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
+                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                             </optgroup>
                             <optgroup label="Cowhides">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
+                                <option value="dreamfusedCowhide">Dreamfused Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Crocodile Skins">
-                                <option value="crocodile">Crocodile Hide</option>
-                                <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
-                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
-                            </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
-                            </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
                             <option value="shark">Shark Hide</option>
+                            <option value="reindeer">Reindeer Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -298,11 +311,36 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Gloves</label>
                         <select id="slotGloves" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
+                            <optgroup label="Deer Hides">
+                                <option value="deer">Deer Hide</option>
+                                <option value="highlandDeer">Highland Deer Hide</option>
+                                <option value="forestDeer">Forest Deer Hide</option>
+                                <option value="tundraDeer">Tundra Deer Hide</option>
+                                <option value="dreamfusedDeer">Dreamfused Deer Hide</option>
+                                <option value="lunarDeer">Lunar Deer Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins">
+                                <option value="wolf">Wolf Skin</option>
+                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
+                                <option value="grasslandWolf">Grassland Wolf Skin</option>
+                                <option value="jungleWolf">Jungle Wolf Skin</option>
+                                <option value="dreamfusedWolf">Dreamfused Wolf Skin</option>
+                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            </optgroup>
                             <optgroup label="Rabbit Furs">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
+                                <option value="dreamfusedRabbit">Dreamfused Rabbit Fur</option>
                                 <option value="lunarRabbit" selected>Lunar Rabbit Fur</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool</option>
+                                <option value="rockWallWool">Rock Wall Wool</option>
+                                <option value="mountainWool">Mountain Wool</option>
+                                <option value="goldenWool">Golden Wool</option>
+                                <option value="dreamfusedWool">Dreamfused Wool</option>
+                                <option value="lunarWool">Lunar Wool</option>
                             </optgroup>
                             <optgroup label="Bear Skins">
                                 <option value="bear">Bear Skin</option>
@@ -310,43 +348,21 @@
                                 <option value="snowfieldBear">Snowfield Bear Skin</option>
                                 <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
-                            <optgroup label="Wool / Goat / Ram">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            <optgroup label="Crocodile Skins">
+                                <option value="crocodile">Crocodile Hide</option>
+                                <option value="beachCrocodile">Beach Crocodile Skin</option>
+                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
+                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                             </optgroup>
                             <optgroup label="Cowhides">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
+                                <option value="dreamfusedCowhide">Dreamfused Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Crocodile Skins">
-                                <option value="crocodile">Crocodile Hide</option>
-                                <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
-                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
-                            </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
-                            </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
                             <option value="shark">Shark Hide</option>
+                            <option value="reindeer">Reindeer Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -355,11 +371,36 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Shoes</label>
                         <select id="slotShoes" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
+                            <optgroup label="Deer Hides">
+                                <option value="deer">Deer Hide</option>
+                                <option value="highlandDeer">Highland Deer Hide</option>
+                                <option value="forestDeer">Forest Deer Hide</option>
+                                <option value="tundraDeer">Tundra Deer Hide</option>
+                                <option value="dreamfusedDeer">Dreamfused Deer Hide</option>
+                                <option value="lunarDeer">Lunar Deer Hide</option>
+                            </optgroup>
+                            <optgroup label="Wolf Skins">
+                                <option value="wolf">Wolf Skin</option>
+                                <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
+                                <option value="grasslandWolf">Grassland Wolf Skin</option>
+                                <option value="jungleWolf">Jungle Wolf Skin</option>
+                                <option value="dreamfusedWolf">Dreamfused Wolf Skin</option>
+                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            </optgroup>
                             <optgroup label="Rabbit Furs">
                                 <option value="rabbit">Rabbit Fur</option>
                                 <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
                                 <option value="luckyRabbit">Lucky Rabbit Fur</option>
+                                <option value="dreamfusedRabbit">Dreamfused Rabbit Fur</option>
                                 <option value="lunarRabbit">Lunar Rabbit Fur</option>
+                            </optgroup>
+                            <optgroup label="Wool / Goat / Ram">
+                                <option value="wool">Wool</option>
+                                <option value="rockWallWool">Rock Wall Wool</option>
+                                <option value="mountainWool">Mountain Wool</option>
+                                <option value="goldenWool">Golden Wool</option>
+                                <option value="dreamfusedWool">Dreamfused Wool</option>
+                                <option value="lunarWool">Lunar Wool</option>
                             </optgroup>
                             <optgroup label="Bear Skins">
                                 <option value="bear">Bear Skin</option>
@@ -367,43 +408,21 @@
                                 <option value="snowfieldBear">Snowfield Bear Skin</option>
                                 <option value="caveBear">Cave Bear Skin</option>
                             </optgroup>
-                            <optgroup label="Wool / Goat / Ram">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf" selected>Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
+                            <optgroup label="Crocodile Skins">
+                                <option value="crocodile">Crocodile Hide</option>
+                                <option value="beachCrocodile">Beach Crocodile Skin</option>
+                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
+                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                             </optgroup>
                             <optgroup label="Cowhides">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
+                                <option value="dreamfusedCowhide">Dreamfused Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Crocodile Skins">
-                                <option value="crocodile">Crocodile Hide</option>
-                                <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
-                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
-                            </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
-                            </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
                             <option value="shark">Shark Hide</option>
+                            <option value="reindeer">Reindeer Hide</option>
                             <option value="sealskin">Sealskin</option>
                         </select>
                     </div>
@@ -412,56 +431,15 @@
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Face (Mask Slot - Excluded from 4pc Sets)</label>
                         <select id="slotFace" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                             <option value="none">None / Standard Hide</option>
-                            <optgroup label="Rabbit Furs">
-                                <option value="rabbit">Rabbit Fur</option>
-                                <option value="dreamyRabbit">Dreamy Rabbit Fur</option>
-                                <option value="luckyRabbit">Lucky Rabbit Fur</option>
-                                <option value="lunarRabbit">Lunar Rabbit Fur</option>
+                            <optgroup label="Mask & Individual Traits">
+                                <option value="starfallDown">Starfall Down (Mask - +30% Pollution Resist airborne)</option>
+                                <option value="starfallCowhide">Starfall Cowhide (Mask - +16% Weapon DMG airborne/stamina)</option>
+                                <option value="luckyRabbit">Lucky Rabbit Fur (Mask - +10% Elemental DMG on crit)</option>
+                                <option value="lunarWool">Lunar Wool (Mask - Status DMG scaling at low HP)</option>
+                                <option value="lunarRabbit">Lunar Rabbit Fur (Mask - +10% Elemental DMG at <30% HP)</option>
                             </optgroup>
-                            <optgroup label="Bear Skins">
-                                <option value="bear">Bear Skin</option>
-                                <option value="floatingIceBear">Floating Ice Bear Skin</option>
-                                <option value="snowfieldBear">Snowfield Bear Skin</option>
-                                <option value="caveBear">Cave Bear Skin</option>
-                            </optgroup>
-                            <optgroup label="Wool / Goat / Ram">
-                                <option value="wool">Wool / Goat / Ram Hide</option>
-                            </optgroup>
-                            <optgroup label="Wolf Skins">
-                                <option value="wolf">Wolf Skin</option>
-                                <option value="wastelandWolf">Wasteland Wolf Skin</option>
-                                <option value="grasslandWolf">Grassland Wolf Skin</option>
-                                <option value="jungleWolf">Jungle Wolf Skin</option>
-                                <option value="lunarWolf">Lunar Wolf Skin</option>
-                            </optgroup>
-                            <optgroup label="Cowhides">
-                                <option value="cowhide">Cowhide</option>
-                                <option value="mountainCowhide">Mountain Cowhide</option>
-                                <option value="valleyCowhide">Valley Cowhide</option>
-                                <option value="starfallCowhide" selected>Starfall Cowhide</option>
-                            </optgroup>
-                            <optgroup label="Crocodile Skins">
-                                <option value="crocodile">Crocodile Hide</option>
-                                <option value="beachCrocodile">Beach Crocodile Skin</option>
-                                <option value="starfallCrocodile">Starfall Crocodile Skin</option>
-                                <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
-                            </optgroup>
-                            <optgroup label="Deer Hides">
-                                <option value="deer">Deer Hide</option>
-                                <option value="highlandDeer">Highland Deer Hide</option>
-                                <option value="forestDeer">Forest Deer Hide</option>
-                                <option value="tundraDeer">Tundra Deer Hide</option>
-                                <option value="lunarDeer">Lunar Deer Hide</option>
-                                <option value="reindeer">Reindeer Hide</option>
-                            </optgroup>
-                            <optgroup label="Fox Skins">
-                                <option value="fox">Fox Skin</option>
-                                <option value="polarFox">Polar Fox Skin</option>
-                                <option value="desertFox">Desert Fox Skin</option>
-                                <option value="starfallFox">Starfall Fox Skin</option>
-                            </optgroup>
-                            <option value="shark">Shark Hide (+4.5% Weapon DMG)</option>
-                            <option value="sealskin">Sealskin</option>
+                            <option value="shark">Shark Hide (+4.5% Weapon DMG, +9% in Water)</option>
+                            <option value="sealskin">Sealskin (+15% reduction while swimming)</option>
                         </select>
                     </div>
                 </div>
@@ -505,7 +483,7 @@
 
         </div>
 
-        <!-- Right Column: Results & Matrix Output + Reference Guide -->
+        <!-- Right Column: Results & Matrix Output -->
         <div class="lg:col-span-5 space-y-6 flex flex-col">
             
             <!-- Real-Time Output Display -->
@@ -569,39 +547,98 @@
 
             </div>
 
-            <!-- Armor Hide Reference Guide Card -->
-            <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
-                <h3 class="text-sm font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Hide & Set Bonus Quick Guide
-                </h3>
-                <div class="space-y-3 text-xs text-slate-300">
-                    <div>
-                        <strong class="text-white">Rabbit Fur (4pc - Soaring Leap):</strong> Grants <span class="text-sky-400">+20% Weak Spot DMG</span> while airborne/mid-air.
+        </div>
+
+    </main>
+
+    <!-- Interactive Reference Sheet Modal -->
+    <div id="guideModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-gaming-card border border-gaming-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 glow-box-strong relative">
+            <div class="flex justify-between items-center pb-4 border-b border-gaming-border sticky top-0 bg-gaming-card z-10">
+                <h2 class="text-xl font-bold text-sky-400 uppercase tracking-wider flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Once Human - Master Armor Hides & Set Bonuses Guide
+                </h2>
+                <button onclick="closeGuideModal()" class="text-slate-400 hover:text-white font-bold text-xl px-3 py-1 rounded bg-gaming-border transition">✕</button>
+            </div>
+
+            <div class="space-y-6 pt-4 text-xs text-slate-300">
+                <!-- 4-Piece Set Bonuses Section -->
+                <div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-3 text-sky-300 border-b border-gaming-border pb-1">⚡ 4-Piece Skin Set Bonuses (Wearing 4x Same Family on Body Slots)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🦌 Deer Hide Set (Melee Builds)</strong>
+                            <p class="text-slate-400">After dealing Impact DMG (melee hit while sprinting), <span class="text-sky-400">Crit DMG +15%</span>.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐺 Wolf Skin Set (Physical/Team)</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Weakspot DMG +6%</span> when in a team with more than 1 player.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐰 Rabbit Fur Set (Physical / Airborne)</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Weakspot DMG +20%</span> while airborne/mid-air.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐐 Wool / Goat Set (Elemental Builds)</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Status DMG +2%</span> for every member in a team (Max +6%).</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐻 Bear Skin Set (Elemental Builds)</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Frost & Shock DMG +6%</span> when temperature is below 10°C.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐊 Crocodile Hide Set</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Weakspot DMG +12%</span> while invisible.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🦊 Fox Skin Set</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">Physical DMG +8%</span> when not in combat.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">🐃 Cowhide Set (Melee Builds)</strong>
+                            <p class="text-slate-400">Impact attacks consume all Stamina, increasing DMG by <span class="text-sky-400">1% per point</span> consumed.</p>
+                        </div>
                     </div>
-                    <div>
-                        <strong class="text-white">Bear Skin (4pc - Power of Bears):</strong> Grants <span class="text-sky-400">+6% Frost & Shock DMG</span> when temp drops below 10°C.
-                    </div>
-                    <div>
-                        <strong class="text-white">Wool/Goat/Ram (4pc - Herd Mentality):</strong> Grants <span class="text-sky-400">+6% Status DMG</span> max scaling with teammates.
-                    </div>
-                    <div>
-                        <strong class="text-white">Wolf Skin (4pc - Pack Hunter):</strong> Amplifies weapon tracking & damage efficiency.
-                    </div>
-                    <div class="pt-2 border-t border-gaming-border">
-                        <strong class="text-white">Single-Piece Highlights (Masks/Fillers):</strong>
-                        <ul class="list-disc list-inside mt-1 space-y-1 text-slate-400">
-                            <li><strong class="text-slate-300">Shark Hide:</strong> +4.5% Weapon DMG (+9% while in water).</li>
-                            <li><strong class="text-slate-300">Cowhide:</strong> Flat weapon damage & stamina scaling.</li>
-                            <li><strong class="text-slate-300">Deer Hide:</strong> Impact damage & sprint damage reduction.</li>
-                        </ul>
+                </div>
+
+                <!-- Individual Hides & Mask Traits Section -->
+                <div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-3 text-sky-300 border-b border-gaming-border pb-1">🛡️ Individual & Mask Slot Highlights</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Mask: Starfall Down</strong>
+                            <p class="text-slate-400">Pollution Resist +15, effect doubles when airborne (<span class="text-sky-400">+30%</span>).</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Mask: Starfall Cowhide</strong>
+                            <p class="text-slate-400">+8% Weapon DMG airborne + 8% on high stamina (<span class="text-sky-400">Total 16%</span>).</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Mask: Lucky Rabbit Fur</strong>
+                            <p class="text-slate-400">Gives <span class="text-sky-400">10% Elemental DMG</span> when critting (Best for full auto spraying).</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Mask: Lunar Rabbit Fur</strong>
+                            <p class="text-slate-400">Gives <span class="text-sky-400">5% Elemental DMG</span> (doubled to 10% below 30% HP with Savior set).</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Shark Hide</strong>
+                            <p class="text-slate-400">+4.5% Weapon DMG, doubled to <span class="text-sky-400">+9%</span> while fighting in water.</p>
+                        </div>
+                        <div class="bg-gaming-dark/60 border border-gaming-border p-3 rounded">
+                            <strong class="text-white block mb-1">Sealskin</strong>
+                            <p class="text-slate-400"><span class="text-sky-400">+15% DMG Reduction</span> while swimming.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="mt-6 pt-4 border-t border-gaming-border text-center">
+                <button onclick="closeGuideModal()" class="px-6 py-2 bg-sky-500 text-slate-950 font-bold uppercase tracking-wider rounded hover:bg-sky-400 transition">Got it, Back to Calculator</button>
+            </div>
         </div>
-
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer class="border-t border-gaming-border bg-gaming-card/30 mt-12 py-6">
@@ -620,14 +657,24 @@
         let slotAData = null;
         let slotBData = null;
 
+        function openGuideModal() {
+            document.getElementById('guideModal').classList.remove('hidden');
+            document.getElementById('guideModal').classList.add('flex');
+        }
+
+        function closeGuideModal() {
+            document.getElementById('guideModal').classList.remove('flex');
+            document.getElementById('guideModal').classList.add('hidden');
+        }
+
         function getHideFamily(val) {
             if (val.includes('rabbit') || val.includes('Rabbit')) return 'rabbit';
             if (val.includes('bear') || val.includes('Bear')) return 'bear';
             if (val.includes('wool') || val.includes('Wool')) return 'wool';
             if (val.includes('wolf') || val.includes('Wolf')) return 'wolf';
-            if (val.includes('cowhide') || val.includes('Cowhide')) return 'cowhide';
+            if (val.includes('cowhide') || val.includes('Cowhide') || val.includes('cow')) return 'cowhide';
             if (val.includes('crocodile') || val.includes('Crocodile')) return 'crocodile';
-            if (val.includes('deer') || val.includes('Deer') || val.includes('reindeer')) return 'deer';
+            if (val.includes('deer') || val.includes('Deer')) return 'deer';
             if (val.includes('fox') || val.includes('Fox')) return 'fox';
             if (val === 'shark') return 'shark';
             return 'other';
@@ -641,7 +688,7 @@
             
             const weaponDmgPct = (parseFloat(document.getElementById('weaponDmgPct').value) || 0) / 100;
             const critRate = Math.min(100, Math.max(0, parseFloat(document.getElementById('critRate').value) || 0)) / 100;
-            const critDmg = (parseFloat(document.getElementById('critDmg').value) || 0) / 100;
+            let critDmgMod = (parseFloat(document.getElementById('critDmg').value) || 0) / 100;
             let weakspotDmgMod = (parseFloat(document.getElementById('weakspotDmg').value) || 0) / 100;
             let psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
             const vulnerability = (parseFloat(document.getElementById('vulnerability').value) || 0) / 100;
@@ -669,27 +716,38 @@
             let elementalBonus = 0;        
             let statusDmgBonus = 0;        
             let flatWeaponDmgBonus = 0;    
+            let critDmgBonus = 0;          
 
+            // 4-Piece Set Bonuses
             if (familyCounts.rabbit >= 4) {
-                airborneWeakspotBonus = 0.20;
+                airborneWeakspotBonus = 0.20; // +20% Airborne Weakspot
                 activeSetText = "Active 4pc Set: Rabbit Fur (Soaring Leap: +20% Airborne Weakspot DMG)!";
             }
             else if (familyCounts.bear >= 4) {
-                elementalBonus = 0.06;
+                elementalBonus = 0.06; // +6% Frost & Shock
                 activeSetText = "Active 4pc Set: Bear Skin (Power of Bears: +6% Element/Frost/Shock)!";
             }
             else if (familyCounts.wool >= 4) {
-                statusDmgBonus = 0.06;
+                statusDmgBonus = 0.06; // Max 6% team status
                 activeSetText = "Active 4pc Set: Herd Mentality (+6% Status Damage team bonus)!";
             }
             else if (familyCounts.wolf >= 4) {
-                flatWeaponDmgBonus += 0.04;
-                activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter tracking & amplification)!";
+                weakspotDmgMod += 0.06; // +6% Weakspot in team
+                activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter: +6% Weakspot DMG in team)!";
+            }
+            else if (familyCounts.deer >= 4) {
+                critDmgBonus += 0.15; // +15% Crit DMG after impact
+                activeSetText = "Active 4pc Set: Deer Hide (Impact Hit: +15% Crit DMG)!";
             }
 
+            // Single Piece / Mask Traits
             const allSelectedHides = [...bodySlots, faceSlot];
             allSelectedHides.forEach(hide => {
                 if (hide === 'shark') flatWeaponDmgBonus += 0.045; 
+                if (hide === 'starfallCowhide') flatWeaponDmgBonus += 0.16;
+                if (hide === 'starfallDown') flatWeaponDmgBonus += 0.10;
+                if (hide === 'luckyRabbit') elementalBonus += 0.10;
+                if (hide === 'lunarRabbit') elementalBonus += 0.05;
             });
 
             document.getElementById('hideSetStatus').innerText = activeSetText;
@@ -698,11 +756,12 @@
             const adjustedBase = baseDmg * (1 + effectiveWeaponDmgPct);
             
             const normalHit = adjustedBase * (1 + vulnerability);
-            const critHit = adjustedBase * (1 + critDmg) * (1 + vulnerability);
+            const effectiveCritDmg = critDmgMod + critDmgBonus;
+            const critHit = adjustedBase * (1 + effectiveCritDmg) * (1 + vulnerability);
             const avgHit = normalHit * (1 - critRate) + critHit * critRate;
             
             const totalWeakspotMult = weakspotDmgMod + airborneWeakspotBonus;
-            const maxHit = adjustedBase * (1 + critDmg + totalWeakspotMult) * (1 + vulnerability);
+            const maxHit = adjustedBase * (1 + effectiveCritDmg + totalWeakspotMult) * (1 + vulnerability);
 
             const shotsPerSec = fireRate / 60;
             const timeToEmpty = magSize / shotsPerSec;
