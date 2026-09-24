@@ -120,7 +120,7 @@
                         Armor Slot Hide Crafting Selection
                     </h2>
                 </div>
-                <p class="text-xs text-slate-400 mb-4">Select the exact hide for each gear slot. Matching 4 pieces of a family triggers 4-piece combat bonuses automatically!</p>
+                <p class="text-xs text-slate-400 mb-4">Select the exact hide for each gear slot. Matching 4 body pieces triggers family combat bonuses automatically (Mask excluded).</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -149,19 +149,19 @@
                                 <option value="jungleWolf">Jungle Wolf Skin</option>
                                 <option value="lunarWolf">Lunar Wolf Skin</option>
                             </optgroup>
-                            <optgroup label="Cowhides (Flat Weapon DMG / Stamina)">
+                            <optgroup label="Cowhides">
                                 <option value="cowhide">Cowhide</option>
                                 <option value="mountainCowhide">Mountain Cowhide</option>
                                 <option value="valleyCowhide">Valley Cowhide</option>
                                 <option value="starfallCowhide">Starfall Cowhide</option>
                             </optgroup>
-                            <optgroup label="Crocodile Skins (Heat Resistance)">
+                            <optgroup label="Crocodile Skins">
                                 <option value="crocodile">Crocodile Hide</option>
                                 <option value="beachCrocodile">Beach Crocodile Skin</option>
                                 <option value="starfallCrocodile">Starfall Crocodile Skin</option>
                                 <option value="coastalCrocodile">Coastal Bay Crocodile Skin</option>
                             </optgroup>
-                            <optgroup label="Deer Hides (Impact & Sprint DMG Reduction)">
+                            <optgroup label="Deer Hides">
                                 <option value="deer">Deer Hide</option>
                                 <option value="highlandDeer">Highland Deer Hide</option>
                                 <option value="forestDeer">Forest Deer Hide</option>
@@ -505,11 +505,11 @@
 
         </div>
 
-        <!-- Right Column: Results & Matrix Output -->
+        <!-- Right Column: Results & Matrix Output + Reference Guide -->
         <div class="lg:col-span-5 space-y-6 flex flex-col">
             
             <!-- Real-Time Output Display -->
-            <div class="bg-gaming-card border border-sky-500/40 rounded-xl p-6 glow-box-strong relative overflow-hidden flex-grow">
+            <div class="bg-gaming-card border border-sky-500/40 rounded-xl p-6 glow-box-strong relative overflow-hidden">
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 
                 <h2 class="text-xl font-bold text-white uppercase tracking-wider mb-6 flex items-center justify-between">
@@ -545,7 +545,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Status / Element Tick</p>
-                            <p class="text-xs text-slate-500">Psi Intensity & herd mentality scaling</p>
+                            <p class="text-xs text-slate-500">Psi Intensity & element scaling</p>
                         </div>
                         <div class="text-xl font-bold text-amber-400" id="resStatusTick">0</div>
                     </div>
@@ -569,6 +569,36 @@
 
             </div>
 
+            <!-- Armor Hide Reference Guide Card -->
+            <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
+                <h3 class="text-sm font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Hide & Set Bonus Quick Guide
+                </h3>
+                <div class="space-y-3 text-xs text-slate-300">
+                    <div>
+                        <strong class="text-white">Rabbit Fur (4pc - Soaring Leap):</strong> Grants <span class="text-sky-400">+20% Weak Spot DMG</span> while airborne/mid-air.
+                    </div>
+                    <div>
+                        <strong class="text-white">Bear Skin (4pc - Power of Bears):</strong> Grants <span class="text-sky-400">+6% Frost & Shock DMG</span> when temp drops below 10°C.
+                    </div>
+                    <div>
+                        <strong class="text-white">Wool/Goat/Ram (4pc - Herd Mentality):</strong> Grants <span class="text-sky-400">+6% Status DMG</span> max scaling with teammates.
+                    </div>
+                    <div>
+                        <strong class="text-white">Wolf Skin (4pc - Pack Hunter):</strong> Amplifies weapon tracking & damage efficiency.
+                    </div>
+                    <div class="pt-2 border-t border-gaming-border">
+                        <strong class="text-white">Single-Piece Highlights (Masks/Fillers):</strong>
+                        <ul class="list-disc list-inside mt-1 space-y-1 text-slate-400">
+                            <li><strong class="text-slate-300">Shark Hide:</strong> +4.5% Weapon DMG (+9% while in water).</li>
+                            <li><strong class="text-slate-300">Cowhide:</strong> Flat weapon damage & stamina scaling.</li>
+                            <li><strong class="text-slate-300">Deer Hide:</strong> Impact damage & sprint damage reduction.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </main>
@@ -579,7 +609,7 @@
             <p>Created by <span class="text-slate-200 font-semibold">Krema Ops</span> for the Once Human Community.</p>
             <div class="flex items-center space-x-4">
                 <a href="https://tiktok.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">TikTok</a>
-                <a href="https://youtube.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">Jump to YouTube</a>
+                <a href="https://youtube.com/@kremaops" target="_blank" class="hover:text-sky-400 transition">YouTube</a>
                 <span>Use Code <strong class="text-sky-400">KremaOps</strong> on Dubby Energy!</span>
             </div>
         </div>
@@ -616,7 +646,6 @@
             let psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
             const vulnerability = (parseFloat(document.getElementById('vulnerability').value) || 0) / 100;
 
-            // 5 Body Slots Count for 4-Piece Sets (Helmet, Top, Bottoms, Gloves, Shoes). Mask/Face is excluded.
             const bodySlots = [
                 document.getElementById('slotHelmet').value,
                 document.getElementById('slotTop').value,
@@ -635,43 +664,36 @@
                 }
             });
 
-            // Check active 4-piece set bonuses & individual single-piece buffs
             let activeSetText = "No 4-Piece Combat Set Active (Needs 4 matching body pieces)";
-            let airborneWeakspotBonus = 0; // Rabbit Fur Set (+20% Weakspot)
-            let elementalBonus = 0;        // Bear Skin Set (+6% Frost/Shock)
-            let statusDmgBonus = 0;        // Wool/Goat Set (+6% Status)
-            let flatWeaponDmgBonus = 0;    // Shark Hide / Cowhide single piece boosts
+            let airborneWeakspotBonus = 0; 
+            let elementalBonus = 0;        
+            let statusDmgBonus = 0;        
+            let flatWeaponDmgBonus = 0;    
 
-            // 1. Rabbit Fur Set Check (Soaring Leap)
             if (familyCounts.rabbit >= 4) {
                 airborneWeakspotBonus = 0.20;
-                activeSetText = "Active 4pc Set: Rabbit Fur (Soaring Leap: +20% Airborne Weakspot DMG) active!";
+                activeSetText = "Active 4pc Set: Rabbit Fur (Soaring Leap: +20% Airborne Weakspot DMG)!";
             }
-            // 2. Bear Skin Set Check (Power of Bears)
             else if (familyCounts.bear >= 4) {
                 elementalBonus = 0.06;
-                activeSetText = "Active 4pc Set: Bear Skin (Power of Bears: +6% Element/Frost/Shock) active!";
+                activeSetText = "Active 4pc Set: Bear Skin (Power of Bears: +6% Element/Frost/Shock)!";
             }
-            // 3. Wool / Goat / Ram Set Check (Herd Mentality)
             else if (familyCounts.wool >= 4) {
                 statusDmgBonus = 0.06;
-                activeSetText = "Active 4pc Set: Herd Mentality (+6% Status Damage team bonus) active!";
+                activeSetText = "Active 4pc Set: Herd Mentality (+6% Status Damage team bonus)!";
             }
-            // 4. Wolf Skin Set Check (Pack Hunter)
             else if (familyCounts.wolf >= 4) {
                 flatWeaponDmgBonus += 0.04;
-                activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter tracking & damage amplification) active!";
+                activeSetText = "Active 4pc Set: Wolf Skin (Pack Hunter tracking & amplification)!";
             }
 
-            // Check individual single-piece mask/slot highlights
             const allSelectedHides = [...bodySlots, faceSlot];
             allSelectedHides.forEach(hide => {
-                if (hide === 'shark') flatWeaponDmgBonus += 0.045; // Shark hide single piece
+                if (hide === 'shark') flatWeaponDmgBonus += 0.045; 
             });
 
             document.getElementById('hideSetStatus').innerText = activeSetText;
 
-            // Apply game math multipliers
             const effectiveWeaponDmgPct = weaponDmgPct + flatWeaponDmgBonus;
             const adjustedBase = baseDmg * (1 + effectiveWeaponDmgPct);
             
@@ -679,7 +701,6 @@
             const critHit = adjustedBase * (1 + critDmg) * (1 + vulnerability);
             const avgHit = normalHit * (1 - critRate) + critHit * critRate;
             
-            // Factor in Rabbit Fur's +20% airborne weakspot bonus on max weakspot hits
             const totalWeakspotMult = weakspotDmgMod + airborneWeakspotBonus;
             const maxHit = adjustedBase * (1 + critDmg + totalWeakspotMult) * (1 + vulnerability);
 
@@ -689,7 +710,6 @@
             const totalDmgPerMag = avgHit * magSize;
             const sustainedDPS = totalCycleTime > 0 ? totalDmgPerMag / totalCycleTime : 0;
 
-            // Status tick with Herd Mentality / element scaling
             const effectivePsi = psiIntensity * (1 + elementalBonus + statusDmgBonus);
             const statusTick = (effectivePsi * 0.35) * (1 + vulnerability);
 
