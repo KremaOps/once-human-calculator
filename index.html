@@ -112,32 +112,36 @@
                 </div>
             </div>
 
-            <!-- Armor Hides & Furs Configuration -->
+            <!-- Armor Hides & Mixed Furs Configuration (6 Gear Pieces Total) -->
             <div class="bg-gaming-card border border-gaming-border rounded-xl p-6 glow-box">
-                <h2 class="text-lg font-bold text-sky-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    Armor Hides & Skin Set Bonuses
-                </h2>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-sky-400 uppercase tracking-wider flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        Mixed Armor Hides (6 Gear Pieces)
+                    </h2>
+                    <span id="hideTotalBadge" class="text-xs font-semibold px-2 py-1 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">Total: 6 / 6 Pieces</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4">Specify how many of your 6 armor pieces use each hide type. Hitting 4+ of the same hide type automatically triggers matching skin set bonuses!</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Equipped Hide / Fur Bonus</label>
-                        <select id="hideBonusType" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
-                            <option value="none">None / Standard Hide</option>
-                            <option value="rabbit">Lunar Rabbit Fur (+7% Airborne DMG Reduction)</option>
-                            <option value="starfall">Starfall Cowhide (Stamina & Movement Bonus)</option>
-                            <option value="wolf">Wasteland Wolf Skin (Crit / Aggression Bonus)</option>
-                            <option value="bear">Bear Skin (Max HP & Defensive Mitigation)</option>
-                        </select>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Lunar Rabbit Fur (Pieces)</label>
+                        <input type="number" id="hidesRabbit" value="4" min="0" max="6" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Hide Set Bonus Active?</label>
-                        <select id="hideSetBonus" onchange="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
-                            <option value="1">No Matching Set</option>
-                            <option value="1.15">Yes (Matching Animal Hide Set Bonus Active +15%)</option>
-                        </select>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Wasteland Wolf Skin (Pieces)</label>
+                        <input type="number" id="hidesWolf" value="1" min="0" max="6" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Starfall Cowhide (Pieces)</label>
+                        <input type="number" id="hidesStarfall" value="1" min="0" max="6" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Bear Skin (Pieces)</label>
+                        <input type="number" id="hidesBear" value="0" min="0" max="6" oninput="calculateDPS()" class="w-full bg-gaming-dark border border-gaming-border rounded px-3 py-2 text-white focus:outline-none focus:border-sky-400 transition">
                     </div>
                 </div>
+                <div id="hideSetStatus" class="mt-3 text-xs font-semibold text-emerald-400">Active Set Bonus: Lunar Rabbit 4-Piece Mitigation Bonus Active!</div>
             </div>
 
             <!-- Mod & Multiplier Stack -->
@@ -201,7 +205,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Average Burst Hit</p>
-                            <p class="text-xs text-slate-500">Factoring hide set & crit frequency</p>
+                            <p class="text-xs text-slate-500">Factoring mixed hides & crit frequency</p>
                         </div>
                         <div class="text-xl font-bold text-white" id="resAvgHit">0</div>
                     </div>
@@ -257,7 +261,7 @@
         </div>
     </footer>
 
-    <!-- Calculation & Safe OCR Engine Script -->
+    <!-- Calculation & Mixed Hide Logic Engine -->
     <script>
         let slotAData = null;
         let slotBData = null;
@@ -275,16 +279,42 @@
             const psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
             const vulnerability = (parseFloat(document.getElementById('vulnerability').value) || 0) / 100;
 
-            const hideSetMultiplier = parseFloat(document.getElementById('hideSetBonus').value) || 1;
-            const hideType = document.getElementById('hideBonusType').value;
+            // Mixed Hide Piece Counts Across 6 Gear Slots
+            const rabbitCount = parseInt(document.getElementById('hidesRabbit').value) || 0;
+            const wolfCount = parseInt(document.getElementById('hidesWolf').value) || 0;
+            const starfallCount = parseInt(document.getElementById('hidesStarfall').value) || 0;
+            const bearCount = parseInt(document.getElementById('hidesBear').value) || 0;
+            
+            const totalHides = rabbitCount + wolfCount + starfallCount + bearCount;
+            document.getElementById('hideTotalBadge').innerText = `Total: ${totalHides} / 6 Pieces`;
 
-            let hideEffectBonus = 0;
-            if (hideType === 'rabbit') hideEffectBonus = 0.07;
-            else if (hideType === 'starfall') hideEffectBonus = 0.05;
-            else if (hideType === 'wolf') hideEffectBonus = 0.08;
-            else if (hideType === 'bear') hideEffectBonus = 0.05;
+            // Calculate aggregate passive bonus from mixed pieces
+            // Rabbit: +7% mitigation/airborne mod, Wolf: +8% crit/aggression, Starfall: +5% speed, Bear: +5% HP/defense
+            const aggregateHideBonus = (rabbitCount * 0.07 + wolfCount * 0.08 + starfallCount * 0.05 + bearCount * 0.05) / 6;
 
-            const adjustedBase = (baseDmg * (1 + weaponDmgPct)) * hideSetMultiplier * (1 + hideEffectBonus);
+            // Check for 4-piece set matching bonus (+15% set modifier)
+            let setBonusMultiplier = 1;
+            let activeSetText = "No 4-Piece Set Bonus Active";
+            
+            if (rabbitCount >= 4) {
+                setBonusMultiplier = 1.15;
+                activeSetText = "Active Set Bonus: Lunar Rabbit 4-Piece Mitigation Bonus Active (+15%)!";
+            } else if (wolfCount >= 4) {
+                setBonusMultiplier = 1.15;
+                activeSetText = "Active Set Bonus: Wasteland Wolf 4-Piece Aggression Bonus Active (+15%)!";
+            } else if (starfallCount >= 4) {
+                setBonusMultiplier = 1.15;
+                activeSetText = "Active Set Bonus: Starfall Cowhide 4-Piece Mobility Bonus Active (+15%)!";
+            } else if (bearCount >= 4) {
+                setBonusMultiplier = 1.15;
+                activeSetText = "Active Set Bonus: Bear Skin 4-Piece Mitigation Bonus Active (+15%)!";
+            } else if (totalHides > 6) {
+                activeSetText = "Warning: Total hide pieces exceed 6 armor slots!";
+            }
+            document.getElementById('hideSetStatus').innerText = activeSetText;
+
+            // Adjusted base calculation factoring weapon mods, mixed hide passives, and set bonuses
+            const adjustedBase = (baseDmg * (1 + weaponDmgPct)) * setBonusMultiplier * (1 + aggregateHideBonus);
             
             const normalHit = adjustedBase * (1 + vulnerability);
             const critHit = adjustedBase * (1 + critDmg) * (1 + vulnerability);
@@ -297,7 +327,7 @@
             const totalDmgPerMag = avgHit * magSize;
             const sustainedDPS = totalCycleTime > 0 ? totalDmgPerMag / totalCycleTime : 0;
 
-            const statusTick = (psiIntensity * 0.35) * (1 + vulnerability) * hideSetMultiplier;
+            const statusTick = (psiIntensity * 0.35) * (1 + vulnerability) * setBonusMultiplier;
 
             document.getElementById('resSustainedDPS').innerText = Math.round(sustainedDPS).toLocaleString();
             document.getElementById('resAvgHit').innerText = Math.round(avgHit).toLocaleString();
@@ -320,7 +350,7 @@
                 { logger: m => {} }
             ).then(({ data: { text } }) => {
                 document.getElementById('uploadLabel').innerText = "Choose or Drop Screenshot...";
-                document.getElementById('scanStatus').innerText = "Scan complete! Parsed main character attributes safely.";
+                document.getElementById('scanStatus').innerText = "Scan complete! Parsed character attributes safely.";
                 parseCharacterScreenshot(text);
             }).catch(err => {
                 document.getElementById('uploadLabel').innerText = "Choose or Drop Screenshot...";
@@ -330,14 +360,11 @@
 
         function parseCharacterScreenshot(text) {
             const lines = text.split('\n');
-            
             for (let line of lines) {
                 const lower = line.toLowerCase();
                 const numbers = line.match(/\d+/g);
-                
                 if (!numbers) continue;
 
-                // Explicitly look for the character panel labels only
                 if (lower.includes('attack') && !lower.includes('melee')) {
                     document.getElementById('baseDmg').value = parseInt(numbers[0]);
                 }
@@ -345,7 +372,6 @@
                     document.getElementById('psiIntensity').value = parseInt(numbers[0]);
                 }
             }
-
             calculateDPS();
         }
 
