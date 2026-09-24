@@ -120,7 +120,7 @@
                         Armor Slot Hide Crafting Selection
                     </h2>
                 </div>
-                <p class="text-xs text-slate-400 mb-4">Pick the exact hide or fur used for each gear slot. Matching 4 or more pieces of the same animal family triggers set bonuses automatically!</p>
+                <p class="text-xs text-slate-400 mb-4">Select the hide used for each gear slot to track active family set bonuses across your build.</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -441,7 +441,7 @@
                         </select>
                     </div>
                 </div>
-                <div id="hideSetStatus" class="mt-3 text-xs font-semibold text-emerald-400">Active Set Bonus: Rabbit Family 4-Piece Set Bonus Active!</div>
+                <div id="hideSetStatus" class="mt-3 text-xs font-semibold text-sky-400">Skin Set Family Tracker: 4+ matching pieces highlights active animal family traits.</div>
             </div>
 
             <!-- Mod & Multiplier Stack -->
@@ -505,7 +505,7 @@
                     <div class="bg-gaming-dark/60 border border-gaming-border rounded-lg p-4 flex justify-between items-center">
                         <div>
                             <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Average Burst Hit</p>
-                            <p class="text-xs text-slate-500">Factoring slot hides & crit frequency</p>
+                            <p class="text-xs text-slate-500">Factoring mod stacks & crit frequency</p>
                         </div>
                         <div class="text-xl font-bold text-white" id="resAvgHit">0</div>
                     </div>
@@ -561,7 +561,7 @@
         </div>
     </footer>
 
-    <!-- Calculation & Slot Hide Family Engine -->
+    <!-- Calculation Engine Script -->
     <script>
         let slotAData = null;
         let slotBData = null;
@@ -590,7 +590,7 @@
             const psiIntensity = parseFloat(document.getElementById('psiIntensity').value) || 0;
             const vulnerability = (parseFloat(document.getElementById('vulnerability').value) || 0) / 100;
 
-            // Collect selections from all 6 armor slots
+            // Collect selections from all 6 armor slots to track family counts
             const slots = [
                 document.getElementById('slotHelmet').value,
                 document.getElementById('slotTop').value,
@@ -601,35 +601,26 @@
             ];
 
             let familyCounts = { rabbit: 0, wolf: 0, cowhide: 0, bear: 0, crocodile: 0, deer: 0, fox: 0, other: 0 };
-            let totalActiveHides = 0;
-
             slots.forEach(hide => {
                 if (hide !== 'none') {
-                    totalActiveHides++;
                     let fam = getHideFamily(hide);
                     if (familyCounts[fam] !== undefined) familyCounts[fam]++;
                 }
             });
 
-            // Determine if any animal family hits 4+ for the set bonus (+15%)
-            let setBonusMultiplier = 1;
-            let activeSetText = "No 4-Piece Set Bonus Active";
-
+            // Display active family counts cleanly without fake global damage multipliers
+            let statusText = "Skin Set Family Tracker: No 4+ matching family pieces.";
             for (let fam in familyCounts) {
                 if (familyCounts[fam] >= 4) {
-                    setBonusMultiplier = 1.15;
                     let familyNameCapitalized = fam.charAt(0).toUpperCase() + fam.slice(1);
-                    activeSetText = `Active Set Bonus: ${familyNameCapitalized} Family 4-Piece Set Bonus Active (+15%)!`;
+                    statusText = `Active Set Family: ${familyNameCapitalized} (${familyCounts[fam]}/6 pieces matching)`;
                     break;
                 }
             }
-            document.getElementById('hideSetStatus').innerText = activeSetText;
+            document.getElementById('hideSetStatus').innerText = statusText;
 
-            // Aggregate passive individual slot boosts (~1.2% per hide piece average bonus)
-            const aggregateHideBonus = totalActiveHides * 0.012;
-
-            // Adjusted base calculation
-            const adjustedBase = (baseDmg * (1 + weaponDmgPct)) * setBonusMultiplier * (1 + aggregateHideBonus);
+            // Clean, accurate calculation driven strictly by attack power, weapon mod stacks, and target vulnerability
+            const adjustedBase = baseDmg * (1 + weaponDmgPct);
             
             const normalHit = adjustedBase * (1 + vulnerability);
             const critHit = adjustedBase * (1 + critDmg) * (1 + vulnerability);
@@ -642,7 +633,7 @@
             const totalDmgPerMag = avgHit * magSize;
             const sustainedDPS = totalCycleTime > 0 ? totalDmgPerMag / totalCycleTime : 0;
 
-            const statusTick = (psiIntensity * 0.35) * (1 + vulnerability) * setBonusMultiplier;
+            const statusTick = (psiIntensity * 0.35) * (1 + vulnerability);
 
             document.getElementById('resSustainedDPS').innerText = Math.round(sustainedDPS).toLocaleString();
             document.getElementById('resAvgHit').innerText = Math.round(avgHit).toLocaleString();
